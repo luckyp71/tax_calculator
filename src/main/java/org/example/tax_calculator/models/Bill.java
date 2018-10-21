@@ -28,15 +28,6 @@ private static final long serialVersionUID = 1L;
 		return id;
 	}
 	
-	public Bill() {}
-	
-	public Bill(long id, String name, String tax_code, Long price) {
-		this.id = id;
-		this.name = name;
-		this.tax_code = tax_code;
-		this.price = price;
-	}
-	
 	public void setId(long id) {
 		this.id = id;
 	}
