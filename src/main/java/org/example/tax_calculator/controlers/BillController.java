@@ -59,12 +59,11 @@ public class BillController {
 		if(response.equals("success")) {
 			headers.add("response-code", "00");
 			headers.add("response-desc", "Success");
-			return ResponseEntity.status(HttpStatus.OK).headers(headers).body("{\"Message\":\"Customer inserted successfully\"}");
+			return ResponseEntity.status(HttpStatus.OK).headers(headers).body("{\"Message\":\"Bill inserted successfully\"}");
 		}
 		headers.add("response-code", "01");
 		headers.add("response-desc", "Data already exists");
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body("{\"Message\":\"Bill with given id is already exists\"}");
-		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body("{\"Message\":\"Bill with given id is already exists\"}");	
 	}
 	
 }
