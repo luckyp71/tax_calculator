@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.example.tax_calculator.models.Bill;
 import org.example.tax_calculator.models.BillCustom;
 import org.example.tax_calculator.repository.BillRepo;
@@ -56,18 +55,21 @@ public class BillServiceImpl implements BillService {
 				break;
 			}
 		}
+		
+		System.out.println(billsCustom);
 
 		return billsCustom;
 	}
 
 	@Override
 	public BillCustom getBillById(Long id) {
-		Bill b = billRepo.getOne(id);
+		
+		Bill b = billRepo.findOne(id);
 		BillCustom billCustom = null;
 		double tax = 0;
 		if (b != null) {
 			switch (b.getTax_code()) {
-			case "1":
+			case "1":	
 				tax = getTax(0.1, b.getPrice());
 				billCustom = new BillCustom(b.getName(), b.getTax_code(), b.getPrice(), "Food & Beverage", "Yes", tax,
 						getAmount(b.getPrice(), tax));
@@ -87,10 +89,10 @@ public class BillServiceImpl implements BillService {
 					tax = getTax(0.01, price);
 					billCustom = new BillCustom(b.getName(), b.getTax_code(), b.getPrice(), "Entertainment", "No", tax,
 							getAmount(b.getPrice(), tax));
-					break;
 				}
+				break;
 			}
-		}
+		} 	
 		return billCustom;
 	}
 
@@ -106,14 +108,13 @@ public class BillServiceImpl implements BillService {
 
 	@Override
 	public String updateBill(Long id, Bill bill) {
-		Bill billRep = billRepo.getOne(id);
-		billRep.setName(bill.getName());
-		billRep.setPrice(bill.getPrice());
-		billRep.setTax_code(bill.getTax_code());
-
+		Bill billRep = billRepo.findOne(id);
 		String response = "";
-		if (billRepo != null) {
-			billRepo.save(bill);
+		if (billRep != null) {
+			billRep.setName(bill.getName());
+			billRep.setPrice(bill.getPrice());
+			billRep.setTax_code(bill.getTax_code());
+			billRepo.save(billRep);
 			response = "success";
 		} else {
 			response = "error";
@@ -123,7 +124,7 @@ public class BillServiceImpl implements BillService {
 
 	@Override
 	public String deleteBill(Long id) {
-		Bill bill = billRepo.getOne(id);
+		Bill bill = billRepo.findOne(id);
 		String response = "";
 		if (bill != null) {
 			billRepo.delete(bill);
