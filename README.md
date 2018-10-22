@@ -11,7 +11,7 @@
 
 ## Step to run the project
 Since the project used Spring Data JPA and we set to its config to auto generate ddl, so that we do not need define the table manually.
-1. Replace the db's user credential with yours in application.properties and docker-compose.yml files. 
+1. Replace the db credential with yours in application.properties and docker-compose.yml files. 
 2. Cleaning, installing, and packaging the project by using maven command i.e. mvn clean install package.
 3. Create and run docker image of this project by using docker-compose command i.e. docker-compose up -d --build
 4. Test this project's web services by using any HTTP client tool or curl command.
