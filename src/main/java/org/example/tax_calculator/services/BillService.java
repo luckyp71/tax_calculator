@@ -17,7 +17,7 @@ public interface BillService {
 	public String addBill(Bill bill);
 	
 	//Update bill
-	public String updateBill(Bill bill);
+	public String updateBill(Long id, Bill bill);
 	
 	//Delete bill
 	public String deleteBill(Long id);

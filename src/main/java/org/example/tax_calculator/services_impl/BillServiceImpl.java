@@ -22,7 +22,7 @@ public class BillServiceImpl implements BillService {
 	}
 
 	public Double getAmount(Long price, double tax) {
-		return price +  tax;
+		return price + tax;
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class BillServiceImpl implements BillService {
 
 	@Override
 	public BillCustom getBillById(Long id) {
-		Bill b = billRepo.findOne(id);
+		Bill b = billRepo.getOne(id);
 		BillCustom billCustom = null;
 		double tax = 0;
 		if (b != null) {
@@ -97,19 +97,22 @@ public class BillServiceImpl implements BillService {
 	@Override
 	public String addBill(Bill bill) {
 		String response = "";
-		if (billRepo.findOne(bill.getId()) != null) {
-			response = "error";
-		} else {
-			billRepo.save(bill);
-			response = "success";
-		}
+
+		billRepo.save(bill);
+		response = "success";
+
 		return response;
 	}
 
 	@Override
-	public String updateBill(Bill bill) {
+	public String updateBill(Long id, Bill bill) {
+		Bill billRep = billRepo.getOne(id);
+		billRep.setName(bill.getName());
+		billRep.setPrice(bill.getPrice());
+		billRep.setTax_code(bill.getTax_code());
+
 		String response = "";
-		if (getBillById(bill.getId()) != null) {
+		if (billRepo != null) {
 			billRepo.save(bill);
 			response = "success";
 		} else {
@@ -120,10 +123,10 @@ public class BillServiceImpl implements BillService {
 
 	@Override
 	public String deleteBill(Long id) {
-		Bill bill = billRepo.findOne(id);
+		Bill bill = billRepo.getOne(id);
 		String response = "";
 		if (bill != null) {
-			billRepo.delete(id);
+			billRepo.delete(bill);
 			response = "success";
 		} else {
 			response = "error";

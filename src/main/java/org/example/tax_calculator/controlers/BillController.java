@@ -66,10 +66,10 @@ public class BillController {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body("{\"Message\":\"Bill with given id is already exists\"}");	
 	}
 	
-	@PutMapping(value="", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> updateBill(@RequestBody Bill bill){
+	@PutMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> updateBill(@PathVariable Long id, @RequestBody Bill bill){
 		HttpHeaders headers = new HttpHeaders();
-		String response = billService.updateBill(bill);
+		String response = billService.updateBill(id, bill);
 		if(response.equals("success")) {
 			headers.add("response-code", "00");
 			headers.add("response-desc", "Success");
@@ -81,7 +81,7 @@ public class BillController {
 	}
 	
 	@DeleteMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> updateBill(@PathVariable Long id){
+	public ResponseEntity<String> deleteBill(@PathVariable Long id){
 		HttpHeaders headers = new HttpHeaders();
 		String response = billService.deleteBill(id);
 		if(response.equals("success")) {

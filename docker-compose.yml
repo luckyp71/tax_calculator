@@ -1,0 +1,23 @@
+version: '3'
+
+services: 
+  db:
+   restart: always
+   image: postgres:latest
+   ports:
+    - "5439:5432"
+   environment:
+    POSTGRES_PASSWORD: pratama
+    POSTGRES_USER: postgres
+    POSTGRES_DB: postgres
+  tax_calculator:
+   image: tax_calculator:dev
+   build: . 
+   ports:
+    - "8090:8090"
+   depends_on:
+    - db
+   environment:
+     SPRING_DATASOURCE_URL: jdbc:postgresql://db/postgres
+     SPRING_DATASOURCE_USERNAME: postgres
+     SPRING_DATASOURCE_PASSWORD: pratama

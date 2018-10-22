@@ -14,21 +14,36 @@ public class Bill implements Serializable {
 
 private static final long serialVersionUID = 1L;
 	
-	@SequenceGenerator(name="billSequence", allocationSize=1, initialValue =1, sequenceName="bill_sequence")
+	@SequenceGenerator(name="billSequenceNew", allocationSize=1, initialValue =1, sequenceName="bill_sequenceNew")
 	
 	@Id
-	@GeneratedValue(generator="billSequence")
-	private long id;
+	@GeneratedValue(generator="billSequenceNew")
+	private Long id;
 	private String name;
 	private String tax_code;
 	private Long price;
 	
+	public Bill() {}
+	
+	public Bill(String name, String tax_code, Long price) {
+		this.name = name;
+		this.tax_code = tax_code;
+		this.price = price;
+	}
+	
+	public Bill(Long id, String name, String tax_code, Long price) {
+		this.id = id;
+		this.name = name;
+		this.tax_code = tax_code;
+		this.price = price;
+	}
+	
 	@Column(name="id")
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
