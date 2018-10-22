@@ -62,8 +62,7 @@ public class BillServiceImpl implements BillService {
 	}
 
 	@Override
-	public BillCustom getBillById(Long id) {
-		
+	public BillCustom getBillById(Long id) {	
 		Bill b = billRepo.findOne(id);
 		BillCustom billCustom = null;
 		double tax = 0;
