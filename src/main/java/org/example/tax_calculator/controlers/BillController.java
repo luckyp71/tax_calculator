@@ -28,7 +28,7 @@ public class BillController {
 
 	@Autowired
 	BillServiceImpl billService;
-
+	
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<BillCustom>> getBills() {
 		HttpHeaders headers = new HttpHeaders();
@@ -59,13 +59,11 @@ public class BillController {
 		if (response.equals("success")) {
 			headers.add("response-code", "00");
 			headers.add("response-desc", "Success");
-			return ResponseEntity.status(HttpStatus.OK).headers(headers)
-					.body("{\"Message\":\"Bill inserted successfully\"}");
+			return ResponseEntity.status(HttpStatus.OK).headers(headers).body("{\"Message\":\"Bill inserted successfully\"}");
 		}
 		headers.add("response-code", "02");
 		headers.add("response-desc", "Data already exists");
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers)
-				.body("{\"Message\":\"Bill with given id is already exists\"}");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).headers(headers).body("{\"Message\":\"Bill with given id is already exists\"}");
 	}
 
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,13 +73,11 @@ public class BillController {
 		if (response.equals("success")) {
 			headers.add("response-code", "00");
 			headers.add("response-desc", "Success");
-			return ResponseEntity.status(HttpStatus.OK).headers(headers)
-					.body("{\"Message\":\"Bill updated successfully\"}");
+			return ResponseEntity.status(HttpStatus.OK).headers(headers).body("{\"Message\":\"Bill updated successfully\"}");
 		}
 		headers.add("response-code", "01");
 		headers.add("response-desc", "Data not found");
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers)
-				.body("{\"Message\":\"Bill with given id is not found\"}");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers).body("{\"Message\":\"Bill with given id is not found\"}");
 	}
 
 	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,12 +87,10 @@ public class BillController {
 		if (response.equals("success")) {
 			headers.add("response-code", "00");
 			headers.add("response-desc", "Success");
-			return ResponseEntity.status(HttpStatus.OK).headers(headers)
-					.body("{\"Message\":\"Bill deleted successfully\"}");
+			return ResponseEntity.status(HttpStatus.OK).headers(headers).body("{\"Message\":\"Bill deleted successfully\"}");
 		}
 		headers.add("response-code", "01");
 		headers.add("response-desc", "Data not found");
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers)
-				.body("{\"Message\":\"Bill with given id is not found\"}");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers).body("{\"Message\":\"Bill with given id is not found\"}");
 	}
 }
