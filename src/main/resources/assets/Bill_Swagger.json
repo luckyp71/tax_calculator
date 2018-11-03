@@ -71,9 +71,7 @@ paths:
         200:
           description: Success
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/Bill'
+              $ref: '#/definitions/BillCustom'
         404:
           description: Data not found
 
@@ -141,7 +139,7 @@ definitions:
         example: Movie
       tax_code:
         type: string
-        example: 1
+        example: '1'
       price:
         type: number
         example: 3000
@@ -161,7 +159,7 @@ definitions:
         example: Movie
       tax_code:
         type: string
-        example: 1
+        example: '1'
       price:
         type: number
         example: 3000
