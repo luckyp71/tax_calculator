@@ -52,7 +52,7 @@
                "example": "Movie"},
              "tax_code": {
                "type": "string",
-               "example": "1"},
+               "example": "3"},
              "price": {
                "type": "number",
                "format": "integer",
@@ -130,7 +130,7 @@
                "example": "Movie"},
              "tax_code": {
                "type": "string",
-               "example": "1"},
+               "example": "3"},
              "price": {
                "type": "number",
                "format": "integer",
@@ -204,7 +204,7 @@
         },
         "tax_code" : {
           "type" : "string",
-          "example" : "1"
+          "example" : "3"
         },
         "price" : {
           "type" : "number",
@@ -223,7 +223,7 @@
         },
         "tax_code" : {
           "type" : "string",
-          "example" : "1"
+          "example" : "3"
         },
         "price" : {
           "type" : "number",
