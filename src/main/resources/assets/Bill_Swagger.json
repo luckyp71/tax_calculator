@@ -60,7 +60,7 @@ paths:
     get:
       tags:
       - developers
-      summary: get single object bill by id
+      summary: retrieve single object of bill by its id
       operationId: getBillById
       description: Retrieve single object of bill data by its id
       produces:
