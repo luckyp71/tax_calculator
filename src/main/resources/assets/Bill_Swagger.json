@@ -23,13 +23,13 @@ paths:
       - application/json
       responses:
         200:
-          description: OK
+          description: Success
           schema:
             type: array
             items:
               $ref: '#/definitions/BillCustom'
         400:
-          description: Bad Request
+          description: bad input parameter
 
     post:
       tags:
@@ -47,9 +47,9 @@ paths:
           $ref: '#/definitions/Bill'
       responses:
         201:
-          description: OK
+          description: Success
         400:
-          description: Bad Request
+          description: Data already exists
 
   /bills/{id}:
     get:
@@ -69,11 +69,11 @@ paths:
           format: long
       responses:
         200:
-          description: OK
+          description: Success
           schema:
               $ref: '#/definitions/BillCustom'
         404:
-          description: Not Found
+          description: Data not found
 
     put:
       tags:
@@ -97,15 +97,9 @@ paths:
             $ref: '#/definitions/Bill'
       responses:
         200:
-          description: OK
-          schema:
-            type: object
-            properties:
-               Message:
-                 type: string
-                 example: Bill updated successfully
+          description: Bill updated successfully
         404:
-          description: Not Found
+          description: Data not found
 
     delete:
       tags:
@@ -124,9 +118,9 @@ paths:
           format: long
       responses:
         200:
-          description: OK
+          description: Success
         404:
-          description: Not Found
+          description: Data not found
 
 definitions:
   Bill:
@@ -148,6 +142,7 @@ definitions:
         example: '1'
       price:
         type: number
+        format: integer
         example: 3000
   BillCustom:
     type: object
@@ -168,7 +163,8 @@ definitions:
         example: '1'
       price:
         type: number
-        example: 3000
+        format: integer
+        example: 2000
       type:
         type: string
         example: Entertainment
@@ -177,10 +173,12 @@ definitions:
         example: No
       tax:
         type: number
-        example: 200
+        format: double
+        example: 200.22
       amount:
         type: number
-        example: 2200
+        format: double
+        example: 2200.22
 
 host: localhost:8090
 basePath: /bills
