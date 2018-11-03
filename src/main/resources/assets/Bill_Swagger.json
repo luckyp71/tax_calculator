@@ -112,8 +112,20 @@
           "in" : "body",
           "description" : "Bill data to be updated",
           "schema" : {
-            "$ref" : "#/definitions/Bill"
+            "properties": {
+             "name": {
+               "type": "string",
+               "example": "Movie"},
+             "tax_code": {
+               "type": "string",
+               "example": "1"},
+             "price": {
+               "type": "number",
+               "format": "integer",
+               "example": 3000
+           }
           }
+        }
         } ],
         "responses" : {
           "200" : {
