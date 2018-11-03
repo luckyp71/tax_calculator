@@ -46,11 +46,23 @@
           "name" : "customer",
           "description" : "Customer data to add",
           "schema" : {
-            "$ref" : "#/definitions/Bill"
+            "properties": {
+             "name": {
+               "type": "string",
+               "example": "Movie"},
+             "tax_code": {
+               "type": "string",
+               "example": "1"},
+             "price": {
+               "type": "number",
+               "format": "integer",
+               "example": 2000
+           }
           }
+        }
         } ],
         "responses" : {
-          "201" : {
+          "200" : {
             "description" : "Ok",
             "schema" : {
               "properties" : {
