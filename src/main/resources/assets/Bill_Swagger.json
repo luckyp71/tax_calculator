@@ -23,13 +23,13 @@ paths:
       - application/json
       responses:
         200:
-          description: Success
+          description: OK
           schema:
             type: array
             items:
               $ref: '#/definitions/BillCustom'
         400:
-          description: bad input parameter
+          description: Bad Request
 
     post:
       tags:
@@ -47,9 +47,9 @@ paths:
           $ref: '#/definitions/Bill'
       responses:
         201:
-          description: Success
+          description: Ok
         400:
-          description: Data already exists
+          description: Bad Request
 
   /bills/{id}:
     get:
@@ -69,11 +69,11 @@ paths:
           format: long
       responses:
         200:
-          description: Success
+          description: OK
           schema:
               $ref: '#/definitions/BillCustom'
         404:
-          description: Data not found
+          description: Not Found
 
     put:
       tags:
@@ -97,9 +97,14 @@ paths:
             $ref: '#/definitions/Bill'
       responses:
         200:
-          description: Bill updated successfully
+          description: OK
+          schema:
+             properties:
+               Message:
+                 type: string
+                 example: Bill updated successfully
         404:
-          description: Data not found
+          description: Not Found
 
     delete:
       tags:
@@ -118,9 +123,9 @@ paths:
           format: long
       responses:
         200:
-          description: Success
+          description: OK
         404:
-          description: Data not found
+          description: Not Found
 
 definitions:
   Bill:
