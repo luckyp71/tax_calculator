@@ -48,6 +48,11 @@ paths:
       responses:
         201:
           description: Ok
+          schema:
+            properties:
+              Message:
+                type: string
+                example: Bill inserted successfully
         400:
           description: Bad Request
 
@@ -124,6 +129,11 @@ paths:
       responses:
         200:
           description: OK
+          schema:
+             properties:
+               Message:
+                 type: string
+                 example: Bill deleted successfully
         404:
           description: Not Found
 
