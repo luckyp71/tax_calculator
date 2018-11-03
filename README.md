@@ -1,7 +1,7 @@
 <h1>Tax Calculator</h1>
 
 <h2> RESTful web service to calculate tax using Spring boot.</h2> 
-<h2>To get more detail about the sample payload, please check <a href="https://app.swaggerhub.com/apis/luckyp/Bill/1.0.0#/developers/getBills">this</a></h2>
+<h2>To get more detail about the sample payload of this project, please check <a href="https://app.swaggerhub.com/apis/luckyp/Bill/1.0.0#/developers/getBills">this</a></h2>
 
 <h2>Prerequisites</h2>
 <p>1. Java 8</p>
