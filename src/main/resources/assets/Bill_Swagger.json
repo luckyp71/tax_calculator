@@ -143,7 +143,8 @@ definitions:
       price:
         type: number
         format: integer
-        example: 3000
+        example: 2000
+
   BillCustom:
     type: object
     required:
