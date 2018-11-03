@@ -1,202 +1,233 @@
-swagger: '2.0'
-info:
-  version: 1.0.0
-  title: Bill API
-  description: Bill API
-  contact:
-    email: luckypratama71@yahoo.com
-
-tags:
-- name: developers
-  description: Operations available to developers
-
-paths:
-  /bills:
-    get:
-      tags:
-      - developers
-      summary: retrieve bills data
-      operationId: getBills
-      description: |
-        Get bills data
-      produces:
-      - application/json
-      responses:
-        200:
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/BillCustom'
-        400:
-          description: Bad Request
-
-    post:
-      tags:
-      - developers
-      summary: add bill data
-      operationId: addCustomer
-      description: Add bill data
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: customer
-        description: Customer data to add
-        schema:
-          $ref: '#/definitions/Bill'
-      responses:
-        201:
-          description: Ok
-          schema:
-            properties:
-              Message:
-                type: string
-                example: Bill inserted successfully
-        400:
-          description: Bad Request
-
-  /bills/{id}:
-    get:
-      tags:
-      - developers
-      summary: retrieve single object of bill by its id
-      operationId: getBillById
-      description: Retrieve single object of bill data by its id
-      produces:
-      - application/json
-      parameters:
-        - name: id
-          in: path
-          description: Bill ID
-          required: true
-          type: number
-          format: long
-      responses:
-        200:
-          description: OK
-          schema:
-              $ref: '#/definitions/BillCustom'
-        404:
-          description: Not Found
-
-    put:
-      tags:
-      - developers
-      summary: update existing bill data
-      operationId: updateBill
-      description: Update existing bill data
-      produces:
-      - application/json
-      parameters:
-        - name: id
-          in: path
-          description: Bill ID
-          required: true
-          type: number
-          format: long
-        - name: bill
-          in: body
-          description: Bill data to be updated
-          schema:
-            $ref: '#/definitions/Bill'
-      responses:
-        200:
-          description: OK
-          schema:
-             properties:
-               Message:
-                 type: string
-                 example: Bill updated successfully
-        404:
-          description: Not Found
-
-    delete:
-      tags:
-      - developers
-      summary: delete bill data
-      operationId: deleteBill
-      description: Delete bill data
-      produces:
-      - application/json
-      parameters:
-        - name: id
-          in: path
-          description: Bill ID
-          required: true
-          type: number
-          format: long
-      responses:
-        200:
-          description: OK
-          schema:
-             properties:
-               Message:
-                 type: string
-                 example: Bill deleted successfully
-        404:
-          description: Not Found
-
-definitions:
-  Bill:
-    type: object
-    required:
-    - id
-    - name
-    - tax_code
-    - price
-    properties:
-      id:
-        type: number
-        example: 1
-      name:
-        type: string
-        example: Movie
-      tax_code:
-        type: string
-        example: '1'
-      price:
-        type: number
-        format: integer
-        example: 2000
-
-  BillCustom:
-    type: object
-    required:
-    - name
-    - tax_code
-    - price
-    - type
-    - refundable
-    - tax
-    - amount
-    properties:
-      name:
-        type: string
-        example: Movie
-      tax_code:
-        type: string
-        example: '1'
-      price:
-        type: number
-        format: integer
-        example: 2000
-      type:
-        type: string
-        example: Entertainment
-      refundable:
-        type: string
-        example: No
-      tax:
-        type: number
-        format: double
-        example: 200.22
-      amount:
-        type: number
-        format: double
-        example: 2200.22
-
-host: localhost:8090
-basePath: /bills
-schemes:
-  - http
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Bill API",
+    "description" : "Bill API",
+    "contact" : {
+      "email" : "luckypratama71@yahoo.com"
+    }
+  },
+  "tags" : [ {
+    "name" : "developers",
+    "description" : "Operations available to developers"
+  } ],
+  "paths" : {
+    "/bills" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "retrieve bills data",
+        "operationId" : "getBills",
+        "description" : "Get bills data\n",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/BillCustom"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "add bill data",
+        "operationId" : "addCustomer",
+        "description" : "Add bill data",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "customer",
+          "description" : "Customer data to add",
+          "schema" : {
+            "$ref" : "#/definitions/Bill"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "properties" : {
+                "Message" : {
+                  "type" : "string",
+                  "example" : "Bill inserted successfully"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        }
+      }
+    },
+    "/bills/{id}" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "retrieve single object of bill by its id",
+        "operationId" : "getBillById",
+        "description" : "Retrieve single object of bill data by its id",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Bill ID",
+          "required" : true,
+          "type" : "number",
+          "format" : "long"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/BillCustom"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "developers" ],
+        "summary" : "update existing bill data",
+        "operationId" : "updateBill",
+        "description" : "Update existing bill data",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Bill ID",
+          "required" : true,
+          "type" : "number",
+          "format" : "long"
+        }, {
+          "name" : "bill",
+          "in" : "body",
+          "description" : "Bill data to be updated",
+          "schema" : {
+            "$ref" : "#/definitions/Bill"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "properties" : {
+                "Message" : {
+                  "type" : "string",
+                  "example" : "Bill updated successfully"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "developers" ],
+        "summary" : "delete bill data",
+        "operationId" : "deleteBill",
+        "description" : "Delete bill data",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Bill ID",
+          "required" : true,
+          "type" : "number",
+          "format" : "long"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "properties" : {
+                "Message" : {
+                  "type" : "string",
+                  "example" : "Bill deleted successfully"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Bill" : {
+      "type" : "object",
+      "required" : [ "id", "name", "tax_code", "price" ],
+      "properties" : {
+        "id" : {
+          "type" : "number",
+          "example" : 1
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Movie"
+        },
+        "tax_code" : {
+          "type" : "string",
+          "example" : "1"
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "integer",
+          "example" : 2000
+        }
+      }
+    },
+    "BillCustom" : {
+      "type" : "object",
+      "required" : [ "name", "tax_code", "price", "type", "refundable", "tax", "amount" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Movie"
+        },
+        "tax_code" : {
+          "type" : "string",
+          "example" : "1"
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "integer",
+          "example" : 2000
+        },
+        "type" : {
+          "type" : "string",
+          "example" : "Entertainment"
+        },
+        "refundable" : {
+          "type" : "string",
+          "example" : false
+        },
+        "tax" : {
+          "type" : "number",
+          "format" : "double",
+          "example" : 200.22
+        },
+        "amount" : {
+          "type" : "number",
+          "format" : "double",
+          "example" : 2200.22
+        }
+      }
+    }
+  },
+  "host" : "localhost:8090",
+  "basePath" : "/bills",
+  "schemes" : [ "http" ]
+}
