@@ -18,7 +18,7 @@
         "tags" : [ "developers" ],
         "summary" : "retrieve bills data",
         "operationId" : "getBills",
-        "description" : "Get bills data\n",
+        "description" : "Retrieve bills data",
         "produces" : [ "application/json" ],
         "responses" : {
           "200" : {
@@ -43,24 +43,11 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
-          "name" : "customer",
-          "description" : "Customer data to add",
+          "name" : "bill",
+          "description" : "Bill to add",
           "schema" : {
-            "properties": {
-             "name": {
-               "type": "string",
-               "example": "Movie"},
-             "tax_code": {
-               "type": "string",
-               "example": "3"},
-             "price": {
-               "type": "number",
-               "format": "integer",
-               "example": 2000
-           }
-          }
-        }
-        } ],
+              "$ref" : "#/definitions/Bill"
+        } }],
         "responses" : {
           "200" : {
             "description" : "Ok",
@@ -122,7 +109,7 @@
         }, {
           "name" : "bill",
           "in" : "body",
-          "description" : "Bill data to be updated",
+          "description" : "Bill to update",
           "schema" : {
             "properties": {
              "name": {
@@ -192,12 +179,8 @@
   "definitions" : {
     "Bill" : {
       "type" : "object",
-      "required" : [ "id", "name", "tax_code", "price" ],
+      "required" : [ "name", "tax_code", "price" ],
       "properties" : {
-        "id" : {
-          "type" : "number",
-          "example" : 1
-        },
         "name" : {
           "type" : "string",
           "example" : "Movie"
