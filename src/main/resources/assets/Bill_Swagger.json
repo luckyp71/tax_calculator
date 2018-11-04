@@ -44,6 +44,7 @@
         "parameters" : [ {
           "in" : "body",
           "name" : "bill",
+          "required": true,
           "description" : "Bill to add",
           "schema" : {
               "$ref" : "#/definitions/Bill"
@@ -110,6 +111,7 @@
           "name" : "bill",
           "in" : "body",
           "description" : "Bill to update",
+          "required": true,
           "schema" : {
             "properties": {
              "name": {
